@@ -3,12 +3,16 @@ import java.util.Arrays;
 
 public class Lesson2 {
     public static void main(String[] args) {
-       reverseArray();
+//       reverseArray();
 //        fillArray();
 //        arrayHandling();
 //        diagonalArray(30);
 //        findMaxMin();
-        checkBalance(new int[]{2, 2, 2, 1, 2, 2, 10, 1});
+//        System.out.println(checkBalance(new int[]{10, 5, 3, 3, 8, 1}));
+//        System.out.println();
+//        System.out.println(checkBalance(new int[]{10, 5, 3, 3, 8, 2}));
+
+            moveArray(new int[]{1,2,3,4,5,6,7,8},59);
 
     }
 
@@ -80,21 +84,61 @@ public class Lesson2 {
         System.out.println(Arrays.toString(arr));
         int leftSum = arr[0];
         int rightSum = arr[arr.length-1];
-        int leftPos = 0;
-        int rightPos = 0;
-        for(int i=1;i<arr.length-1;i++){
+        int leftIndex=0;
+        int rightIndex=arr.length-1;
+        for(int i=0;i<arr.length;i++){
             if(leftSum<rightSum){
-                leftSum+=arr[i];
-                leftPos= i-1;
+                leftSum+=arr[leftIndex+1];
+                leftIndex++;
             } else {
-                rightSum+=arr[arr.length - i];
-                rightPos=arr.length - i+1;
+                rightSum+=arr[rightIndex-1];
+                rightIndex--;
             }
-            if(rightPos + leftPos==arr.length) break;
+            if(leftIndex+1==rightIndex) break;
         }
-        System.out.println("Сумма слева " + leftSum);
-        System.out.println("Сумма справа " + rightSum);
-        return true;
+
+        if(leftSum==rightSum) {
+            System.out.println("Сумма слева " + leftSum);
+            System.out.println("Сумма справа " + rightSum);
+            //вывод разделенного массива
+            for (int i = 0; i < arr.length; i++) {
+                System.out.print(arr[i] + " ");
+                if (i == leftIndex) System.out.print("|| ");
+            }
+            return true;
+        } else return false;
+    }
+
+//7. **** Написать метод, которому на вход подается одномерный массив и число n (может быть положительным, или отрицательным),
+// при этом метод должен сместить все элементымассива на n позиций.
+// Для усложнения задачи нельзя пользоваться вспомогательными массивами.
+    private static void moveArray(int [] arr,int n){
+        //ОПТИМИЗИРУЕМ. Если n в разы больше размерности массива, то достаточно провести сдвиг массива n % arr.length раз.
+        if(arr.length < Math.abs(n)) n = n % arr.length;
+
+        System.out.println(Arrays.toString(arr));
+        if(n>0) {
+            for (int i = 1; i <= n; i++) {
+                int buffer = arr[arr.length - 1];
+                for (int j = arr.length - 1; j > 0; j--) {
+                    arr[j] = arr[j - 1];
+                }
+                arr[0] = buffer;
+                System.out.println("step " + i + ":" + Arrays.toString(arr));
+            }
+        }
+        if(n<0){
+            for (int i = -1; i >= n; i--) {
+                int buffer = arr[0];
+                for (int j = 0; j < arr.length-1; j++) {
+                    arr[j] = arr[j + 1];
+                }
+                arr[arr.length-1] = buffer;
+                System.out.println("step " + -i + ":" + Arrays.toString(arr));
+            }
+        }
     }
 
 }
+
+
