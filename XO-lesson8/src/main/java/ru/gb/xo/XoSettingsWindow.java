@@ -47,9 +47,9 @@ public class XoSettingsWindow extends JFrame {
     public void classStartGame() {
         int gameMode;
         if(humVSAI.isSelected()) {
-            gameMode = XoFieldPanel.GAME_MODE_HVAI;
+            gameMode = XoConstants.GAME_MODE_HVAI;
         } else if (humVShum.isSelected()) {
-            gameMode = XoFieldPanel.GAME_MODE_HVH;
+            gameMode = XoConstants.GAME_MODE_HVH;
         } else {
             throw new RuntimeException("Данный режим игры не поддерживается");
         }
