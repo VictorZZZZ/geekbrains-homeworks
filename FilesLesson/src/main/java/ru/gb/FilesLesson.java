@@ -8,7 +8,7 @@ public class FilesLesson {
     public static void main(String[] args) {
         createTxtFile("testDir\\f1.txt","turpis massa sed elementum tempus egestas sed sed risus \n pretium quam vulputate dignissim suspendisse in est ante in nibh mauris cursus mattis molestie a \\n iaculis at erat pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet nulla facilisi morbi \n tempus iaculis urna id volutpat lacus laoreet non curabitur gravida");
         createTxtFile("testDir\\f2.txt","porttitor eget dolor morbi non arcu risus quis varius quam \n quisque id diam vel quam elementum pulvinar etiam non quam lacus suspendisse \n faucibus interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit duis tristique sollicitudin \n nibh sit amet commodo nulla facilisi nullam vehicula ipsum a arcu cursus vitae congue");
-        stickFiles("testDir\\f_1.txt","testDir\\f_2.txt","testDir\\target.txt");
+        stickFiles("testDir\\f1.txt","testDir\\f2.txt","testDir\\target.txt");
         System.out.println(findWordInFile("testDir\\f1.txt","vulputate"));
         System.out.println(findWordInDir("testDir","vulputate"));
         appendWordToAllFiles("testDir"," Geekbrains");
